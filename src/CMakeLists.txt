@@ -4,7 +4,7 @@ add_library(libconfuse STATIC
   reallocarray.c
 )
 
-if(HAS_FUNOPEN)
+if(NOT HAVE_FMEMOPEN)
   target_sources(libconfuse PRIVATE fmemopen.c)
 endif()
 

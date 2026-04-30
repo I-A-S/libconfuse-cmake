@@ -115,7 +115,7 @@ FILE *fmemopen(void *buf, size_t len, const char *type)
 
 	return funopen(ops, readfn, writefn, seekfn, closefn);
 }
-#elif defined(HAVE_WINDOWS_H)
+#elif defined(_WIN32)
 #include <io.h>
 #include <fcntl.h>
 #include <sys/stat.h>
