@@ -1,7 +1,7 @@
 .deps
 .libs
 *confuse*.lo
-lexer.c
+# lexer.c is pre generated for ya
 *lexer*.lo
 *libconfuse*.la
 *.o

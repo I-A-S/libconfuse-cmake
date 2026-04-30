@@ -6,8 +6,10 @@ GRTAGS
 GSYMS
 GTAGS
 ID
+.cache
 aclocal.m4
 autom4te.cache
+build
 config.h
 config.h.in
 config.log

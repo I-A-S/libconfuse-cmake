@@ -8,6 +8,16 @@ libConfuse
 * [Build & Install](#build--install)
 * [Origin & References](#origin--references)
 
+## NOTE: This is a fork!
+
+This repository is a modified fork of [libConfuse](https://github.com/libconfuse/libconfuse).
+
+### Local changes
+- Added CMake-based build support for Windows and cross-platform builds
+- Added feature detection for:
+  `fmemopen`, `reallocarray`, `strdup`, `strndup`, `strcasecmp`
+
+Original project copyright and license are preserved in `LICENSE`.
 
 Introduction
 ------------

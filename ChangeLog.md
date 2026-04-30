@@ -3,10 +3,14 @@ Change Log
 
 All relevant changes to the project are documented in this file.
 
+
 [v3.4][UNRELEASED]
 ------------------
 
 ### Changes
+* Add CMake build support for `libconfuse`
+* Add CMake function checks for `HAVE_FMEMOPEN`, `HAVE_REALLOCARRAY`,
+  `HAVE_STRDUP`, `HAVE_STRNDUP`, and `HAVE_STRCASECMP`
 
 ### Fixes
 * Issue #153: German translation update
