@@ -1,50 +1,20 @@
-name: Bob the Builder
+name: CMake Build
 
-# Run on all branches, including all pull requests, except the 'dev'
-# branch since that's where we run Coverity Scan (limited tokens/day)
-on:
-  push:
-    branches:
-      - '**'
-      - '!dev'
-  pull_request:
-    branches:
-      - '**'
+on: [push, pull_request]
 
 jobs:
   build:
-    # Verify we can build on latest Ubuntu with both gcc and clang
-    name: ${{ matrix.compiler }}
-    runs-on: ubuntu-latest
+    name: Build on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        compiler: [gcc, clang]
+        os: [ubuntu-latest, windows-latest]
       fail-fast: false
-    env:
-      MAKEFLAGS: -j3
-      CC: ${{ matrix.compiler }}
     steps:
-      - name: Install dependencies
-        run: |
-          sudo apt-get -y update
-          sudo apt-get -y install tree doxygen autopoint
       - uses: actions/checkout@v4
-      - name: Configure
-        run: |
-          ./autogen.sh
-          ./configure --prefix= --disable-silent-rules
+      
+      - name: Configure CMake
+        run: cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
+        
       - name: Build
-        run: |
-          make
-      - name: Install to ~/tmp and Inspect
-        run: |
-          DESTDIR=~/tmp make install-strip
-          tree ~/tmp
-      - name: Run Unit Tests
-        run: |
-          make check || (cat test/test-suite.log; false)
-      - name: Upload Test Results
-        uses: actions/upload-artifact@v4
-        with:
-          name: libconfuse-test-${{ matrix.compiler }}
-          path: tests/*
+        run: cmake --build build --config Release

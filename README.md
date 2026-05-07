@@ -1,16 +1,21 @@
+## NOTE: This is a fork!
+
+This repository is a modified fork of [libConfuse](https://github.com/libconfuse/libconfuse).
+
+Changes made:
+
+1) Add CMake Support
+2) Remove legacy build system files and support
+
 libConfuse
 ==========
-[![Badge][]][ISC] [![GitHub Status][]][GitHub] [![Coverity Status][]][Coverity Scan]
+[![Badge][]][ISC]
 
 * [Introduction](#introduction)
 * [Documentation](#documentation)
 * [Examples](#examples)
 * [Build & Install](#build--install)
 * [Origin & References](#origin--references)
-
-## NOTE: This is a fork!
-
-This repository is a modified fork of [libConfuse](https://github.com/libconfuse/libconfuse).
 
 ### Local changes
 - Added CMake-based build support for Windows and cross-platform builds
@@ -55,44 +60,11 @@ Examples
 Build & Install
 ---------------
 
-libConfuse employs the GNU configure and build system.  To list available
-build options, start by unpacking the tarball:
+This fork of libConfuse uses CMake as its build system. To configure, build, and install the library:
 
-    tar xf confuse-3.2.2.tar.xz
-    cd confuse-3.2.2/
-    ./configure --help
-
-For most users the following commands configures, builds and installs the
-library to `/usr/local/`:
-
-    ./configure && make -j9
-    sudo make install
-    sudo ldconfig
-
-See the INSTALL file for the full installation instructions.
-
-When checking out the code from GitHub, use <kbd>./autogen.sh</kbd> to
-generate a `configure` script.  This means you also need the following
-tools:
-
-* autoconf
-* automake
-* libtool
-* gettext
-* autopoint
-* flex
-
-To build the documentation you also need the following tools:
-
-* doxygen
-* xmlto
-
-This is an optional step, so you must build it explicitly from
-its directory:
-
-    cd doc/
-    make documentation
-
+    cmake -B build
+    cmake --build build
+    sudo cmake --install build
 
 Origin & References
 -------------------
