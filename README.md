@@ -1,4 +1,4 @@
-## NOTE: This is a fork!
+## NOTE: This is a fork.
 
 This repository is a modified fork of [libConfuse](https://github.com/libconfuse/libconfuse).
 
